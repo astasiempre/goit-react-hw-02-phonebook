@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ContactListItem from './ContactListItem'
 
 class ContactList extends Component {
   render() {
@@ -11,11 +12,13 @@ class ContactList extends Component {
     );
     return (
       <ul>
-        {filteredContacts.map(contact => (
-          <li key={contact.id}>
-                {contact.name}: {contact.number}
-                <button onClick={onDeleteContact(contact.name)}>Delete</button>
-          </li>
+            {filteredContacts.map(contact => (
+<ContactListItem
+          key={contact.id}
+                    contact={contact.name}
+                    number={contact.number}
+          onDeleteContact={onDeleteContact}
+        />
         ))}
       </ul>
     );
