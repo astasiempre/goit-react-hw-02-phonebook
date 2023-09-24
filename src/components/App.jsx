@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/Contactlist';
+import styled from 'styled-components';
+
+
+const Title = styled.h2`
+  text-align: center;
+`;
 class App extends Component {
   state = {
     contacts: [
@@ -51,7 +57,7 @@ handleDeleteContact = (contactName) => {
     return (
       <div>
         <ContactForm onAddContact={this.handleAddContact} contacts={contacts} />
-        <h2>Contacts</h2>
+        <Title>Contacts</Title>
         <Filter filter={filter} onFilterChange={this.handleFilterChange} />
         <ContactList
           contacts={contacts}

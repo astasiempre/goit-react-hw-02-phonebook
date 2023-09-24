@@ -1,6 +1,45 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid'
 
+import styled from 'styled-components';
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+`;
+
+const Span = styled.span`
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
+
+const Input = styled.input`
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const Button = styled.button`
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
 class ContactForm extends Component {
  state = {
     name: '',
@@ -35,34 +74,34 @@ handleAddContact = () => {
 
   render() {
     return (
-      <form>
+      <FormContainer>
         <h2>Phonebook</h2>
-        <label>
-          <span>Name</span>
-          <input
+        <Label>
+          <Span>Name</Span>
+          <Input
             onChange={this.handleInputChange}
             value={this.state.name}
             type="text"
             name="name"
-            // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label>
-          <span>Number</span>
-          <input
+        </Label>
+        <Label>
+          <Span>Number</Span>
+          <Input
             onChange={this.handleInputChange}
             value={this.state.number}
             type="tel"
             name="number"
             required
           />
-        </label>
-        <button onClick={this.handleAddContact} type="submit">
+        </Label>
+        <Button onClick={this.handleAddContact} type="submit">
           Add contact
-        </button>
-      </form>
+        </Button>
+      </FormContainer>
     );
   }
 }
