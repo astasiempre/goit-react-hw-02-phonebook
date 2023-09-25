@@ -27,8 +27,10 @@ class App extends Component {
 
   handleAddContact = newContact => {
     const phoneBookHascontact = this.state.contacts.some(
-      contact => contact.name === newContact.name
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
+
+
 
     if (phoneBookHascontact) {
       alert(`${newContact.name}is already in contacts`);
